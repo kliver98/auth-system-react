@@ -9,7 +9,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      appname: 'loading...',
+      appname: '',
+      user: {
+        id: '',
+        fullname: '',
+        email:'',
+      },
       db: firebase.firestore(),
     };
   }
@@ -23,39 +28,25 @@ class App extends Component {
         querySnapshot.forEach((doc) => {
           appname = doc.data().name;
           this.setState({
-            appname
+            appname,
           });
         });});
-    console.log(appname);
   };
 
   render() {
-    const { appname } = this.state;
-    let u = {name:"Kliver"};
+    const { appname, user } = this.state;
+    const appStyle = {
+      marginTop: '4em',
+    }
     return (
       <Router>
-        <NavBar appname={appname} user={u} />
-        <div className="App">
-          <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-            crossOrigin="anonymous"
-          />
-          <script
-            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossOrigin="anonymous"
-          />
-          <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossOrigin="anonymous"
-          />
-          <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossOrigin="anonymous"
+        <NavBar appname={appname} user={user} />
+        <div className="App" style={appStyle}>
+          <link 
+            rel="stylesheet" 
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+            crossorigin="anonymous"
           />
           <link
             rel="stylesheet"
