@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/auth-system-react/static/css/main.5f361e03.chunk.css",
-    "main.js": "/auth-system-react/static/js/main.7b8a6860.chunk.js",
-    "main.js.map": "/auth-system-react/static/js/main.7b8a6860.chunk.js.map",
+    "main.js": "/auth-system-react/static/js/main.0fbeded1.chunk.js",
+    "main.js.map": "/auth-system-react/static/js/main.0fbeded1.chunk.js.map",
     "runtime-main.js": "/auth-system-react/static/js/runtime-main.f43401e5.js",
     "runtime-main.js.map": "/auth-system-react/static/js/runtime-main.f43401e5.js.map",
-    "static/js/2.617c72de.chunk.js": "/auth-system-react/static/js/2.617c72de.chunk.js",
-    "static/js/2.617c72de.chunk.js.map": "/auth-system-react/static/js/2.617c72de.chunk.js.map",
+    "static/js/2.79c23dc3.chunk.js": "/auth-system-react/static/js/2.79c23dc3.chunk.js",
+    "static/js/2.79c23dc3.chunk.js.map": "/auth-system-react/static/js/2.79c23dc3.chunk.js.map",
     "index.html": "/auth-system-react/index.html",
-    "precache-manifest.7b5178f9a7eb25ea2aee3fe44ccc2771.js": "/auth-system-react/precache-manifest.7b5178f9a7eb25ea2aee3fe44ccc2771.js",
+    "precache-manifest.f4a2844db15914b0d05825d619c4ec5d.js": "/auth-system-react/precache-manifest.f4a2844db15914b0d05825d619c4ec5d.js",
     "service-worker.js": "/auth-system-react/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/auth-system-react/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.617c72de.chunk.js.LICENSE.txt": "/auth-system-react/static/js/2.617c72de.chunk.js.LICENSE.txt"
+    "static/js/2.79c23dc3.chunk.js.LICENSE.txt": "/auth-system-react/static/js/2.79c23dc3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f43401e5.js",
-    "static/js/2.617c72de.chunk.js",
+    "static/js/2.79c23dc3.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.7b8a6860.chunk.js"
+    "static/js/main.0fbeded1.chunk.js"
   ]
 }
