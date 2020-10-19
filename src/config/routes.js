@@ -26,7 +26,7 @@ export default (
         <Route exact path={BASE+"user/create"}>
           <UserCreate />
         </Route>
-        <Route exact path={BASE+"user/modify"} render={(props) => <UserModify {...props}/>} />
+        <Route exact path={BASE+"user/modify/:email"} render={(props) => <UserModify {...props}/>} />
         <Route exact path={BASE+"user/search"}>
           <UserSearch />
         </Route>

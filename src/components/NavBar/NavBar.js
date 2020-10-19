@@ -9,10 +9,11 @@ const Logged = () => (
   <div className="collapse navbar-collapse" id="navbarNav">
     <Search />
     <ul className="navbar-nav ml-auto">
-      <li className="nav-item active">
-          <Link className="nav-link" to={BASE+"user/"+user.email}>
-            {user.fullname} <span className="sr-only">(current)</span>
-          </Link>
+      <li className="nav-item dropdown">
+        <span className="nav-link dropdown-toggle" data-toggle="dropdown" role="button">{user.fullname}</span>
+        <div className="dropdown-menu">
+          <Sidebar/>
+        </div>
       </li>
       <li className="nav-item">
           <Link className="nav-link" to={BASE+"logout"}>
@@ -58,7 +59,50 @@ function Search() {
   )
 }
 
-
+function Sidebar() {
+  let cursorTitle = {
+    cursor: 'default',
+  }
+  return (
+    <>
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item">
+          <span className="nav-link font-weight-bold h5" style={cursorTitle}>Mi perfil</span>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <Link class="nav-link active" to={BASE+"user/modify/"+user.email}>Ver</Link>
+            </li>
+          </ul>
+        </li>
+        <li className="list-group-item">
+          <span className="nav-link font-weight-bold h5" style={cursorTitle}>Dependencias</span>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <Link class="nav-link active" to={BASE+"dependency/create"}>Crear</Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link active" to={BASE+"dependency/search"}>Buscar</Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link active" to={BASE+"dependency/modify"}>Editar / Eliminar</Link>
+            </li>
+          </ul>
+        </li>
+        <li className="list-group-item">
+          <span className="nav-link font-weight-bold h5" style={cursorTitle}>Usuarios</span>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <Link class="nav-link active" to={BASE+"user/create"}>Crear</Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link active" to={BASE+"user/search"}>Buscar</Link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </>
+  )
+}
 
 class NavBar extends Component {
   render() {
