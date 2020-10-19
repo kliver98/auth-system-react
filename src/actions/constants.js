@@ -6,3 +6,4 @@ export const USER = "Correo";
 export const MESSAGE = "Mensaje";
 export const SEARCH = "Buscar";
 export const BASE = "/auth-system-react/";
+export const SET_USER = "setUser";

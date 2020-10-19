@@ -1,19 +1,22 @@
 import React, { Component, useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { SEARCH, LOGIN, BASE, PASSWORD, USER } from '../../actions/constants';
+import { SEARCH, LOGIN, BASE, PASSWORD, USER, LOGOUT } from '../../actions/constants';
+
+let user = {};
 
 const Logged = () => (
   <div className="collapse navbar-collapse" id="navbarNav">
     <Search />
     <ul className="navbar-nav ml-auto">
       <li className="nav-item active">
-          <Link className="nav-link" to="/">
-            Home <span className="sr-only">(current)</span>
+          <Link className="nav-link" to={BASE+"user/"+user.email}>
+            {user.fullname} <span className="sr-only">(current)</span>
           </Link>
       </li>
       <li className="nav-item">
-          <Link className="nav-link" to="/dashboard">
-            Dashboard
+          <Link className="nav-link" to={BASE+"logout"}>
+          <i className="fas fa-sign-out-alt"></i>
           </Link>
       </li>
     </ul>
@@ -35,7 +38,7 @@ function Login() {
             <button type="submit" className="btn btn-primary my-2 my-sm-0">{LOGIN}</button>
           </form>
           :
-          <Link onClick={() => setShowLogin(true)} className="nav-link">Iniciar sesión</Link>
+          <span onClick={() => setShowLogin(true)} className="nav-link" style={{cursor:"pointer"}}>Iniciar sesión</span>
         }
 
         </li>
@@ -46,28 +49,34 @@ function Login() {
 
 function Search() {
   return (
-  <form className="form-inline my-2 my-lg-0">
-    <input className="form-control mr-sm-2" type="search" placeholder={SEARCH} aria-label={SEARCH} />
-    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">{SEARCH}</button>
-  </form>
+  <>
+    <form className="form-inline my-2 my-lg-0">
+      <input className="form-control mr-sm-2" type="search" placeholder={SEARCH} aria-label={SEARCH} />
+      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">{SEARCH}</button>
+    </form>
+  </>
   )
 }
 
-export default class NavBar extends Component {
+
+
+class NavBar extends Component {
   render() {
-    const { appname, user } = this.props;
+    const { appname } = this.props;
     const navStyle = {
       backgroundColor: 'silver',
     }
+    user = this.props.user;
     return (
       <div>
+      
         <nav
           className="navbar navbar-expand-md navbar-light fixed-top"
           style={navStyle}
         >
           <div className="container">
-            <Link className="navbar-brand" to="/">
-              <i class="fas fa-user-shield"></i>
+            <Link className="navbar-brand" to={BASE}>
+              <i className="fas fa-user-shield"></i>
               {' '+appname}
             </Link>
             <button
@@ -81,10 +90,18 @@ export default class NavBar extends Component {
                 >
               <span className="navbar-toggler-icon"></span>
             </button>
-            { user.id==='' ?  <Login /> : <Logged /> }
+            { user.email==='' ?  <Login /> : <Logged/> }
           </div>
         </nav>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+};
+
+export default connect(mapStateToProps)(NavBar);
