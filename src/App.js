@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import routes from './config/routes';
 import NavBar from './components/NavBar/NavBar';
 import firebase from './config/firebase';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { BASE } from './actions/constants';
 
 class App extends Component {
   constructor() {

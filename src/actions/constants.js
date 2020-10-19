@@ -7,3 +7,4 @@ export const MESSAGE = "Mensaje";
 export const SEARCH = "Buscar";
 export const BASE = "/auth-system-react/";
 export const SET_USER = "setUser";
+export const GET_DEPENDENCIES = "getDependencies";

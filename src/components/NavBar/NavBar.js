@@ -1,10 +1,9 @@
 import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { SEARCH, LOGIN, BASE, PASSWORD, USER, LOGOUT } from '../../actions/constants';
+import { SEARCH, LOGIN, BASE, PASSWORD, USER } from '../../actions/constants';
 
 let user = {};
-
 
 const Logged = () => (
   <div className="collapse navbar-collapse" id="navbarNav">
@@ -69,34 +68,34 @@ function Sidebar() {
       <ul className="list-group list-group-flush">
         <li className="list-group-item">
           <span className="nav-link font-weight-bold h5" style={cursorTitle}>Mi perfil</span>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <Link class="nav-link active" to={BASE+"user/modify/"+user.email}>Ver</Link>
+          <ul className="nav flex-column">
+            <li className="nav-item">
+              <Link className="nav-link active" to={BASE+"user/modify/"+user.email}>Ver</Link>
             </li>
           </ul>
         </li>
         <li className="list-group-item">
           <span className="nav-link font-weight-bold h5" style={cursorTitle}>Dependencias</span>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <Link class="nav-link active" to={BASE+"dependency/create"}>Crear</Link>
+          <ul className="nav flex-column">
+            <li className="nav-item">
+              <Link className="nav-link active" to={BASE+"dependency/create"}>Crear</Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link active" to={BASE+"dependency/search"}>Buscar</Link>
+            <li className="nav-item">
+              <Link className="nav-link active" to={BASE+"dependency/search"}>Buscar</Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link active" to={BASE+"dependency/modify"}>Editar / Eliminar</Link>
+            <li className="nav-item">
+              <Link className="nav-link active" to={BASE+"dependency/modify"}>Editar / Eliminar</Link>
             </li>
           </ul>
         </li>
         <li className="list-group-item">
           <span className="nav-link font-weight-bold h5" style={cursorTitle}>Usuarios</span>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <Link class="nav-link active" to={BASE+"user/create"}>Crear</Link>
+          <ul className="nav flex-column">
+            <li className="nav-item">
+              <Link className="nav-link active" to={BASE+"user/create"}>Crear</Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link active" to={BASE+"user/search"}>Buscar</Link>
+            <li className="nav-item">
+              <Link className="nav-link active" to={BASE+"user/search"}>Buscar</Link>
             </li>
           </ul>
         </li>
@@ -145,7 +144,7 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
   }
 };
 

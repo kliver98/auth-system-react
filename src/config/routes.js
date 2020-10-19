@@ -3,6 +3,7 @@ import Home from "../components/Home/Home";
 import DepCreate from "../components/Dependency/DepCreate";
 import DepModify from "../components/Dependency/DepModify";
 import DepSearch from "../components/Dependency/DepSearch";
+import DepItemSearch from "../components/Dependency/DepItemSearch";
 import UserCreate from "../components/User/UserCreate";
 import UserModify from "../components/User/UserModify";
 import UserSearch from "../components/User/UserSearch";
@@ -20,8 +21,11 @@ export default (
           <DepCreate />
         </Route>
         <Route exact path={BASE+"dependency/modify"} render={(props) => <DepModify {...props}/>} />
-        <Route exact path={BASE+"dependency/search"}>
+        <Route exact path={BASE+"dependency/search/all"}>
           <DepSearch />
+        </Route>
+        <Route exact path={BASE+"dependency/search/:id"}>
+          <DepItemSearch />
         </Route>
         <Route exact path={BASE+"user/create"}>
           <UserCreate />
