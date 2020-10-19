@@ -5,6 +5,7 @@ import { SEARCH, LOGIN, BASE, PASSWORD, USER, LOGOUT } from '../../actions/const
 
 let user = {};
 
+
 const Logged = () => (
   <div className="collapse navbar-collapse" id="navbarNav">
     <Search />
