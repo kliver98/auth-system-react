@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9f24e75d866afa0b8b89f6e9ce608368",
+    "revision": "1873b51e7e3e6cec349847c586397ea1",
     "url": "/auth-system-react/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/auth-system-react/static/css/2.1afe660f.chunk.css"
   },
   {
-    "revision": "7bfc1c368d8de349f591",
+    "revision": "65b0f7baeb64db6c49ec",
     "url": "/auth-system-react/static/css/main.f988f791.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/auth-system-react/static/js/2.7518a955.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7bfc1c368d8de349f591",
-    "url": "/auth-system-react/static/js/main.71659a7b.chunk.js"
+    "revision": "65b0f7baeb64db6c49ec",
+    "url": "/auth-system-react/static/js/main.d01213ba.chunk.js"
   },
   {
     "revision": "afbd960a5effc45c4154",
