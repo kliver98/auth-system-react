@@ -6,7 +6,7 @@ import UserCreate from "../components/User/UserCreate";
 import UserModify from "../components/User/UserModify";
 import UserSearch from "../components/User/UserSearch";
 import PageNotFound from "../components/Errors/PageNotFound";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { BASE } from '../actions/constants';
 
 export default (

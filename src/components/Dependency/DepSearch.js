@@ -1,7 +1,8 @@
-import React, { Component, useState } from 'react';
-import { ProgressBar, Button, Card } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { ProgressBar } from 'react-bootstrap';
 import firebase from '../../config/firebase';
 import DepItem from './DepItem';
+import DepUpdate from './DepUpdate';
 import ReactDOM from 'react-dom'
 
 export default class DepSearch extends Component {
@@ -71,9 +72,15 @@ export default class DepSearch extends Component {
             }
         );
         array = array.map(dependency => (
-            <DepItem dependency={dependency} key={dependency.id}/>
+            <DepItem dependency={dependency} key={dependency.id} changeToUpdate={this.changeToUpdate}/>
         ));
         ReactDOM.render(array,document.getElementById(domElement));
+    }
+
+    changeToUpdate = (dependency) => {
+        let doc = document.getElementById("founds");
+        doc.unmountComponentAtNode  = true;
+        ReactDOM.render(<DepUpdate dependency={dependency}/>,doc);
     }
 
     componentDidMount = () => {

@@ -46,7 +46,7 @@ export default class DepItem extends Component {
                         <Card.Text>
                             Activo : {obj.active ? "Sí":"No"}
                         </Card.Text>
-                        <Button variant="secondary" className="mr-2"><i className="far fa-edit"></i> {UPDATE_DEPENDENCY.split(' ')[0]}</Button>
+                        <Button variant="secondary" onClick={() => this.props.changeToUpdate(obj)} className="mr-2"><i className="far fa-edit"></i> {UPDATE_DEPENDENCY.split(' ')[0]}</Button>
                         <Button variant="danger" onClick={this.handleDelete}><i className="fas fa-trash"></i> {DELETE_DEPENDENCY.split(' ')[0]}</Button>
                     </Card.Body>
                     </Router>
@@ -57,8 +57,9 @@ export default class DepItem extends Component {
 
     handleDelete = () => {
         let obj = this.state.obj;
-        if (!obj.users || obj.users.user_id.length===0)
-            this.state.db.collection("dependencies").doc(obj.id).delete();
+        if (!obj.users || obj.users.user_id.length===0) {
+            this.state.db.collection("dependencies").doc(obj.id).delete().then(x => window.location.href = "./all");
+        }
     }
 
     handleUpdate = () => {

@@ -1,43 +1,39 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { CREATE_DEPENDENCY } from '../../actions/constants';
 import firebase from '../../config/firebase';
 import { ProgressBar, Form, Col, Button } from 'react-bootstrap';
 import { Redirect } from "react-router-dom";
 
-class DepCreate extends Component {
+class DepUpdate extends Component {
     constructor() {
         super();
         this.state = {
-          users: [],
           db: firebase.firestore(),
+          users: [],
+          dependency: {},
           active: false,
-          redirect: false,
         };
-        this.handleChangeMaxUsers = this.handleChangeMaxUsers.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onClickUpdateCoordinator = this.onClickUpdateCoordinator.bind(this);
     }
 
     Form1 = () => {
+        let dependency = this.props.dependency;
+        this.state.dependency = dependency;
         return (
             <>
-                <h1>Crear Dependencia</h1>
-                <ProgressBar className="mb-5" variant="info" now={100} />
                 <Form id="form" onSubmit={this.handleSubmit}>
     
                     <Form.Group controlId="formGridName">
                         <Form.Label className="h4">Nombre</Form.Label>
-                        <Form.Control placeholder="Ej: Logística" autoComplete="off"/>
+                        <Form.Control placeholder="Ej: Logística" autoComplete="off" defaultValue={dependency.name}/>
                     </Form.Group>
     
                     <Form.Group controlId="formGridLocation">
                         <Form.Label className="h4">Lugar</Form.Label>
-                        <Form.Control placeholder="Ej: Cali, Colombia" autoComplete="off"/>
+                        <Form.Control placeholder="Ej: Cali, Colombia" autoComplete="off" defaultValue={dependency.location}/>
                     </Form.Group>
     
                     <Form.Group controlId="formGroupSelectCustom">
-                        <Form.Label className="h4" onClick={this.onClickUpdateCoordinator}>Coordinador <Button variant="info"><i class="fas fa-sync-alt"></i></Button></Form.Label>
+                        <Form.Label className="h4" onClick={this.onClickUpdateCoordinator}>Coordinador <Button variant="info"><i className="fas fa-sync-alt"></i></Button></Form.Label>
                         <Form.Control as="select" controlId="formSelectUser" controlName="formSelectUser" htmlSize={5}>
                         <option>Cargando...</option>
                         </Form.Control>
@@ -45,53 +41,23 @@ class DepCreate extends Component {
     
                     <Form.Group as={Col} controlId="formGridMaxUser">
                         <Form.Label>Número máximo de usuarios</Form.Label>
-                        <Form.Control onChange={this.handleChangeMaxUsers} placeholder="Solo números" autoComplete="off" />
+                        <Form.Control onChange={this.handleChangeMaxUsers} placeholder="Solo números" autoComplete="off" defaultValue={dependency.max_users} />
                     </Form.Group>
     
                     <Form.Group id="formGridActive">
-                        <Form.Check type="checkbox" onClick={(x) => {this.setState({active: x.target.checked})}} label="Activar" />
+                        <Form.Check type="checkbox" onClick={(x) => {this.setState({active: x.target.checked})}} defaultChecked={dependency.active} label="Activar" />
                     </Form.Group>
     
-                    <Button variant="primary" type="submit">
-                        {CREATE_DEPENDENCY}
+                    <Button variant="warning" type="submit" className="mr-2">
+                        Editar
+                    </Button>
+                    <Button variant="info" onClick={x => window.location.href = "./all"}>
+                        Cancelar
                     </Button>
                 </Form>
                 {this.state.redirect ? <Redirect to='/auth-system-react/'  />:undefined}
             </>
         )
-    }
-
-    getUsers = () => {
-        let users = [];
-        this.state.db
-          .collection("users")
-          .get()
-          .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                let u = doc.data();
-                let user = {
-                    fullname: u.name+' '+u.last_name,
-                    email: u.email,
-                    rol: u.rol,
-                }
-                users.push(user);
-            });});
-        return users;
-    }
-
-    chargeOptions(domElement) {
-        var array = this.state.users;
-        var select = document.getElementById(domElement);
-        while (select.options.length>0) {
-            select.remove(0);
-        }
-
-        for (let value in array) {
-            var option = document.createElement("option");
-            option.id = array[value].email
-            option.text = array[value].fullname;
-            select.add(option);
-        }
     }
 
     isNumber = (check) => {
@@ -143,16 +109,50 @@ class DepCreate extends Component {
     }
 
     submit = (dependency) => {
-        this.state.db.collection("dependencies").add(dependency);
-        alert('Creado Exitosamente');
-        this.setState({
-            redirect: true,
-        })
+        let r = this.state.db.collection('dependencies').doc(this.state.dependency.id).set(dependency);
+        console.log(r);
+        alert('Actualizado Exitosamente');
+        setTimeout(window.location.href = "./all",1000);
     }
 
-    componentDidMount = () => {
-        setTimeout(() => this.chargeOptions("formGroupSelectCustom"),800);
-    };
+    chargeOptions(domElement) {
+        var array = this.state.users;
+        var select = document.getElementById(domElement);
+        while (select.options.length>0) {
+            select.remove(0);
+        }
+
+        for (let value in array) {
+            var option = document.createElement("option");
+            option.id = array[value].email
+            option.text = array[value].fullname;
+            if (this.state.dependency.coordinator===array[value].email) {
+                option.selected = true;
+            }
+            select.add(option);
+        }
+    }
+
+    getUsers = () => {
+        let users = [];
+        this.state.db.collection("users").get().then(
+            (querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    let u = doc.data();
+                    let user = {
+                        fullname: u.name+' '+u.last_name,
+                        email: u.email,
+                        rol: u.rol,
+                    }
+                users.push(user);
+                });}
+        );
+        return users;
+    }
+
+    componentDidMount() {
+        setTimeout(() => this.chargeOptions("formGroupSelectCustom"),600);
+    }
 
     render() {
         this.state.users = this.getUsers();
@@ -165,10 +165,4 @@ class DepCreate extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-      user: state.user,
-    }
-  };
-
-export default connect(mapStateToProps)(DepCreate);
+export default DepUpdate;
