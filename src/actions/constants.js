@@ -1,6 +1,7 @@
 export const LOGIN = "Iniciar sesión";
 export const LOGOUT = "Cerrar sesión";
-export const UPDATED = "Actualizar";
+export const UPDATE_DEPENDENCY = "Editar dependencia";
+export const DELETE_DEPENDENCY = "Eliminar dependencia";
 export const PASSWORD = "Contraseña";
 export const USER = "Correo";
 export const MESSAGE = "Mensaje";

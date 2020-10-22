@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
 import { BASE, CREATE_DEPENDENCY } from '../../actions/constants';
 import firebase from '../../config/firebase';
-import { Form, Col, Button } from 'react-bootstrap';
+import { ProgressBar, Form, Col, Button } from 'react-bootstrap';
 import { Redirect } from "react-router-dom";
 
 class DepCreate extends Component {
@@ -16,12 +16,14 @@ class DepCreate extends Component {
         };
         this.handleChangeMaxUsers = this.handleChangeMaxUsers.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onClickUpdateCoordinator = this.onClickUpdateCoordinator.bind(this);
     }
 
     Form1 = () => {
         return (
             <>
-                <h1 className="mb-5">{CREATE_DEPENDENCY}</h1>
+                <h1>Crear Dependencia</h1>
+                <ProgressBar className="mb-5" variant="info" now={100} />
                 <Form id="form" onSubmit={this.handleSubmit}>
     
                     <Form.Group controlId="formGridName">
@@ -35,7 +37,7 @@ class DepCreate extends Component {
                     </Form.Group>
     
                     <Form.Group controlId="formGroupSelectCustom">
-                        <Form.Label className="h4" onClick={() => this.onClickUpdateCoordinator}>Coordinador</Form.Label>
+                        <Form.Label className="h4" onClick={this.onClickUpdateCoordinator}>Coordinador <Button variant="info"><i class="fas fa-sync-alt"></i></Button></Form.Label>
                         <Form.Control as="select" controlId="formSelectUser" controlName="formSelectUser" htmlSize={5}>
                         <option>Cargando...</option>
                         </Form.Control>
@@ -79,7 +81,6 @@ class DepCreate extends Component {
 
     chargeOptions(domElement) {
         var array = this.state.users;
-
         var select = document.getElementById(domElement);
         while (select.options.length>0) {
             select.remove(0);
@@ -170,4 +171,4 @@ const mapStateToProps = (state) => {
     }
   };
 
-  export default connect(mapStateToProps)(DepCreate);
+export default connect(mapStateToProps)(DepCreate);
