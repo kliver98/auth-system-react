@@ -36,9 +36,3 @@
 		transform: rotate(360deg);
 	}
 }
-
-@media screen and (max-width: 700px) {
-	.sidebar-style {
-		display: none !important;
-	}
-}

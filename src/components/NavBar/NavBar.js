@@ -81,10 +81,7 @@ function Sidebar() {
               <Link className="nav-link active" to={BASE+"dependency/create"}>Crear</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to={BASE+"dependency/search"}>Buscar</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active" to={BASE+"dependency/modify"}>Editar / Eliminar</Link>
+              <Link className="nav-link active" to={BASE+"dependency/search/all"}>Buscar - Editar / Eliminar</Link>
             </li>
           </ul>
         </li>

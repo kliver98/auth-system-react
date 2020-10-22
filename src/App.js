@@ -38,7 +38,7 @@ class App extends Component {
   render() {
     const { appname, user } = this.state;
     const appStyle = {
-      marginTop: '4em',
+      marginTop: '6em',
     }
     return (
       <Provider store={store}>
