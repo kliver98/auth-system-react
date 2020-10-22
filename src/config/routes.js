@@ -3,7 +3,6 @@ import Home from "../components/Home/Home";
 import DepCreate from "../components/Dependency/DepCreate";
 import DepSearch from "../components/Dependency/DepSearch";
 import UserCreate from "../components/User/UserCreate";
-import UserModify from "../components/User/UserModify";
 import UserSearch from "../components/User/UserSearch";
 import PageNotFound from "../components/Errors/PageNotFound";
 import { Route, Switch } from "react-router-dom";
@@ -24,8 +23,7 @@ export default (
         <Route exact path={BASE+"user/create"}>
           <UserCreate />
         </Route>
-        <Route exact path={BASE+"user/modify/:email"} render={(props) => <UserModify {...props}/>} />
-        <Route exact path={BASE+"user/search"}>
+        <Route exact path={BASE+"user/search/all"}>
           <UserSearch />
         </Route>
         <Route path="*">
