@@ -92,7 +92,7 @@ function Sidebar() {
               <Link className="nav-link active" to={BASE+"user/create"}>Crear</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to={BASE+"user/search"}>Buscar</Link>
+              <Link className="nav-link active" to={BASE+"user/search/all"}>Buscar - Editar / Eliminar</Link>
             </li>
           </ul>
         </li>
