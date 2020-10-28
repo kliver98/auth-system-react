@@ -14,7 +14,6 @@ export default class DepItem extends Component {
           obj: props.dependency,
         };
         this.handleDelete = this.handleDelete.bind(this);
-        this.handleUpdate = this.handleUpdate.bind(this);
     }
 
     CardPersonalized = () => {
@@ -46,8 +45,8 @@ export default class DepItem extends Component {
                         <Card.Text>
                             Activo : {obj.active ? "Sí":"No"}
                         </Card.Text>
-                        <Button variant="secondary" onClick={() => this.props.changeToUpdate(obj)} className="mr-2"><i className="far fa-edit"></i> {UPDATE_DEPENDENCY.split(' ')[0]}</Button>
-                        <Button variant="danger" onClick={this.handleDelete}><i className="fas fa-trash"></i> {DELETE_DEPENDENCY.split(' ')[0]}</Button>
+                        <Button variant="secondary" onClick={() => this.props.changeToUpdate(obj)} className="mr-2 mb-1"><i className="far fa-edit"></i> {UPDATE_DEPENDENCY.split(' ')[0]}</Button>
+                        <Button variant="danger" className="mb-1" onClick={this.handleDelete}><i className="fas fa-trash"></i> {DELETE_DEPENDENCY.split(' ')[0]}</Button>
                     </Card.Body>
                     </Router>
                 </Card>
@@ -58,12 +57,8 @@ export default class DepItem extends Component {
     handleDelete = () => {
         let obj = this.state.obj;
         if (!obj.users || obj.users.user_id.length===0) {
-            this.state.db.collection("dependencies").doc(obj.id).delete().then(x => window.location.href = "./all");
+            this.state.db.collection("dependencies").doc(obj.id).delete().then(() => window.location.href = "./all");
         }
-    }
-
-    handleUpdate = () => {
-        
     }
 
     render() {

@@ -3,7 +3,7 @@ import firebase from '../../config/firebase';
 import { ProgressBar, Form, Col, Button } from 'react-bootstrap';
 import { Redirect } from "react-router-dom";
 
-class DepUpdate extends Component {
+class UserUpdate extends Component {
     constructor() {
         super();
         this.state = {
@@ -162,4 +162,4 @@ class DepUpdate extends Component {
     }
 }
 
-export default DepUpdate;
+export default UserUpdate;

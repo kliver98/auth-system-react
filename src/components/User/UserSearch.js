@@ -1,8 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { ProgressBar, Button, Card } from 'react-bootstrap';
 import firebase from '../../config/firebase';
 import UserItem from './UserItem';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import UserUpdate from './UserUpdate';
 
 export default class UserSearch extends Component {
     constructor() {
@@ -73,6 +74,12 @@ export default class UserSearch extends Component {
             <UserItem user={user} key={user.id}/>
         ));
         ReactDOM.render(array,document.getElementById(domElement));
+    }
+
+    changeToUpdate = (user) => {
+        let doc = document.getElementById("founds");
+        doc.unmountComponentAtNode  = true;
+        ReactDOM.render(<UserUpdate user={user}/>,doc);
     }
 
     componentUidMount = () => {

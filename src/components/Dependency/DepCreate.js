@@ -37,7 +37,7 @@ class DepCreate extends Component {
                     </Form.Group>
     
                     <Form.Group controlId="formGroupSelectCustom">
-                        <Form.Label className="h4" onClick={this.onClickUpdateCoordinator}>Coordinador <Button variant="info"><i class="fas fa-sync-alt"></i></Button></Form.Label>
+                        <Form.Label className="h4" onClick={this.onClickUpdateCoordinator}>Coordinador <Button variant="info"><i className="fas fa-sync-alt"></i></Button></Form.Label>
                         <Form.Control as="select" controlId="formSelectUser" controlName="formSelectUser" htmlSize={5}>
                         <option>Cargando...</option>
                         </Form.Control>
